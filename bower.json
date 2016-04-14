@@ -1,0 +1,29 @@
+{
+  "name": "meadowlark",
+  "description": "node express",
+  "main": "app.js",
+  "authors": [
+    "jan8611@163.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "homepage": "https://github.com/imgoodman/meadowlark",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "chai": "^3.5.0"
+  }
+}

@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Meadowlark Travel</title>
+	<title>TODO</title>
+	{{#if showTests}}
+		<link rel="stylesheet" type="text/css" href="/libs/mocha/mocha.css">
+	{{/if}}
 </head>
 <body>
 	<header>
-		<img src="/img/1.jpg" alt='logo'>
 	</header>
-	<h1>sdsdsd</h1>
 	{{{body}}}
+	<script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+	{{#if showTests}}
+		<div id="mocha"></div>
+		<script type="text/javascript" src="/libs/mocha/mocha.js"></script>
+		<script type="text/javascript" src="/libs/chai/chai.js"></script>
+		<script type="text/javascript">
+			mocha.ui('tdd');
+			var assert=chai.assert;
+		</script>
+		<script type="text/javascript" src="/qa/tests-global.js"></script>
+		{{#if pageTestScript}}
+			<script type="text/javascript" src="{{pageTestScript}}"></script>
+		{{/if}}
+	{{/if}}
 </body>
 </html>

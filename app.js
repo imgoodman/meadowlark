@@ -13,6 +13,13 @@ app.set('view engine','handlebars');
 
 app.set('port', process.env.PORT || 3000);
 
+//用于测试
+app.use(function(req,res,next){
+	if(app.get('env')!=='production' && req.query.test==='1'){
+		res.locals.showTests=true;
+	}
+	next();
+});
 
 //home
 app.get('/',function(req,res){
