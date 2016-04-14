@@ -1,0 +1,26 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "node express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imgoodman/meadowlark.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "jan8611@163.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imgoodman/meadowlark/issues"
+  },
+  "homepage": "https://github.com/imgoodman/meadowlark#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
