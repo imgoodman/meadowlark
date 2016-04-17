@@ -22,6 +22,10 @@ app.set('view engine','handlebars');
 
 app.set('port', process.env.PORT || 3000);
 
+var credentials=require('./credentials');
+app.use(require('cookie-parser')(credentials.cookieSecret));
+app.use(require('express-session')());
+
 //用于测试
 app.use(function(req,res,next){
 	if(app.get('env')!=='production' && req.query.test==='1'){
@@ -30,6 +34,12 @@ app.use(function(req,res,next){
 	next();
 });
 
+//flash message
+app.use(function(req,res,next){
+	res.locals.flash=req.session.flash;
+	delete req.session.flash;
+	next();
+});
 //home
 app.get('/',function(req,res){
 	res.render('home');
@@ -54,8 +64,38 @@ app.post('/process',function(req,res){
 	if(req.xhr || req.accepts('json,html')==='json'){
 		res.json({success:true})
 	}else{
-	res.redirect(303,'/thank-you');
+		res.redirect(303,'/thank-you');
 	}
+});
+//upload file
+var formidable=require('formidable');
+app.get('/contest/vacation-photo',function(req,res){
+	var now=new Date();
+	res.render('contest/vacation-photo',{
+		year:now.getFullYear(),
+		month:(now.getMonth()+1)
+	});
+});
+app.post('/contest/vacation-photo/:year/:month',function(req,res){
+	var form=new formidable.IncomingForm();
+	form.parse(req,function(err,fields,files){
+		if(err){
+			res.redirect(303,'/error');
+		}
+		console.log("Year from route: "+req.params.year);
+		console.log("Month from route: "+req.params.month);
+		console.log('Received fields: \n'+fields);
+		console.log('name: '+fields.name);
+		console.log('email: '+fields.email);
+		console.log('Received files: \n'+files)
+		for(var file in files){
+			console.log(file);
+		}
+		res.redirect(303,'/thank-you');
+	});
+});
+app.get('/error',function(req,res){
+	res.render('error');
 });
 app.get('/thank-you',function(req,res){
 	res.render('thank-you');

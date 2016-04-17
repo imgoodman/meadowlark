@@ -1,6 +1,7 @@
 # ignore packages installed by npm
 node_modules
 public/libs
+credentials.js
 
 # Windows image file caches
 Thumbs.db

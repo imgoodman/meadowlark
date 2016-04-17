@@ -11,6 +11,13 @@
 <body>
 	<header>
 	</header>
+	{{#if flash}}
+		<div class="alert alert-dismissible alert-{{flash.type}}">
+			<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>{{flash.intro}}</strong>
+			{{{flash.message}}}
+		</div>
+	{{/if}}
 	<div class="container">
 		<div class="row">
 			{{{body}}}
